@@ -1,6 +1,14 @@
 # Build dir
 build/
 
+# Pouch Database directories and files
+_replicator/
+_users/
+knitter/
+pouch__all_dbs__/
+config.json
+log.txt
+
 # Logs
 logs
 *.log
