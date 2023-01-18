@@ -17,9 +17,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: Log in to the Container registry
+      uses: docker/login-action@v2
+      with:
+        registry: ${{ env.REGISTRY }}
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
     - name: Build and push
       uses: docker/build-push-action@v3
       with:
         context: .
         push: true
-        tags:  knitter-org/server:latest
+        tags: latest
