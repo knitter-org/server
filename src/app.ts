@@ -5,8 +5,7 @@ import PouchDB from 'pouchdb';
 
 import * as corsProxy from './cors-proxy';
 
-const pouchdb = PouchDB.defaults({ prefix: './database/' });
-po
+const pouchdb = PouchDB.defaults({ prefix: './data/' });
 console.log('Database ready...');
 
 const app = express();
