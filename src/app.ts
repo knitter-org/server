@@ -5,20 +5,22 @@ import PouchDB from 'pouchdb';
 
 import * as corsProxy from './cors-proxy';
 
-const db = new PouchDB('knitter');
+const pouchdb = PouchDB.defaults({ prefix: './database/' });
+po
 console.log('Database ready...');
 
 const app = express();
 app.use(morgan('combined'));
 
 const corsOptions = {
-    optionsSuccessStatus: 200
+    origin: true,
+    credentials: true,
 };
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
 
 app.use('/proxy', corsProxy.router)
-app.use('/db/', require('express-pouchdb')(PouchDB));
+app.use('/db/', require('express-pouchdb')(pouchdb));
 
 console.log('Listening on port 3000...');
 app.listen(3000);
